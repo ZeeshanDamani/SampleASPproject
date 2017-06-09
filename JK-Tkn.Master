@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="JK-Tkn.Master.cs" Inherits="JK_Tkn.Site1" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Global-e-Parts</title>
+    <link href="/StreamExample/assets/css/style.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-2.2.1.min.js" type="text/javascript"></script>
+    <script src="/Scripts/odernizr-2.8.3-respond-1.4.2.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon" />
+    <style>
+        #lblTimer {
+            font: 16px 'lato_bold';
+            display: inline-block;
+            width: 100%;
+            color: white;
+            text-transform: capitalize;
+            padding: 19px 25px 19px 45px;
+            transition: 0.3s ease all;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body onload="getMenu()">
+    <div class="loader_container">
+        <div class="lockScreen"></div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+            <div class="rect6"></div>
+            <div class="rect7"></div>
+            <div class="rect8"></div>
+            <div class="rect9"></div>
+            <div class="rect10"></div>
+            <h2>Loading....</h2>
+        </div>
+    </div>
+    <form id="form1" runat="server">
+        <div class="lockScreen"></div>
+        <div class="success_msg_cotnainer">
+            <div class="close_container2" onclick="success_msg_close()"></div>
+            <span></span>
+        </div>
+        <div class="main_parent_container">
+            <div class="left_menu_bar">
+                <div class="mn_btn_container">
+                    <div class="logo_container">
+                        <a href="/"></a>
+                    </div>
+                    <%--  <div class="menu_button"></div>--%>
+                </div>
+                <%-- <asp:Menu ID="Menu1" runat="server" DynamicHorizontalOffset="2" Font-Names="Verdana"
+                StaticSubMenuIndent="10px">--%>
+                <asp:HiddenField ClientIDMode="Static" ID="hdnUserID" runat="server" />
+                <h4 id="lblTimer" clientidmode="Static" runat="server"></h4>
+                <ul id="navMenu" class="mymenu">
+
+                    <%--    <li id="li9" runat="server"><a class="anchor_1" href="/Users/RoleSetup.aspx">Role</a><a href="/Users/RoleSetup.aspx"><span class="color1">R</span></a></li>
+                    <li id="li10" runat="server"><a class="anchor_1" href="/Users/User.aspx">User</a><a href="/Users/User.aspx"><span class="color2">U</span></a></li>
+                    <li id="li37" runat="server"><a class="anchor_1" href="/Forms/ManageUserAllocation.aspx">User Allocation</a><a href="/Forms/ManageUserAllocation.aspx"><span class="color2">U</span></a></li>
+                    <li id="li11" runat="server"><a class="anchor_1" href="/Users/FormSetup.aspx">Forms</a><a href="/Users/FormSetup.aspx"><span class="color3">F</span></a></li>
+                    <li id="li12" runat="server"><a class="anchor_1" href="/Forms/ManageWarehouse.aspx">Warehouse</a><a href="/Forms/ManageWarehouse.aspx"><span class="color4">W</span></a></li>
+                    <li id="li13" runat="server"><a class="anchor_1" href="/Forms/ManageVendor.aspx">Vendor</a><a href="/Forms/ManageVendor.aspx"><span class="color5">V</span></a></li>
+                    <li id="li14" runat="server"><a class="anchor_1" href="/Forms/ManageCustomer.aspx">Customer</a><a href="/Forms/ManageCustomer.aspx"><span class="color10">P</span></a></li>
+                    <li id="li15" runat="server"><a class="anchor_1" href="/Forms/ManageValues.aspx">Values</a><a href="/Forms/ManageValues.aspx"><span class="color6">V</span></a></li>
+                    <li id="li35" runat="server"><a class="anchor_1" href="/Forms/ManageMasterProduct.aspx">Master Product</a><a href="/Forms/ManageMasterProduct.aspx"><span class="color7">P</span></a></li>
+                    <li id="li16" runat="server"><a class="anchor_1" href="/Forms/ManageProduct.aspx">Product</a><a href="/Forms/ManageProduct.aspx"><span class="color7">P</span></a></li>
+                    <li id="li33" runat="server"><a class="anchor_1" href="/Forms/ManageProductCW.aspx">Product Content Writer</a><a href="/Forms/ManageProductCW.aspx"><span class="color7">P</span></a></li>
+                    <li id="li34" runat="server"><a class="anchor_1" href="/Forms/ManageProductRevert.aspx">Product Revert</a><a href="/Forms/ManageProductRevert.aspx"><span class="color7">P</span></a></li>
+                    <li id="li36" runat="server"><a class="anchor_1" href="/Forms/ManageProductUploader.aspx">Product Uploader</a><a href="/Forms/ManageProductUploader.aspx"><span class="color7">P</span></a></li>
+                    <li><a class="anchor_1" id="sub_menu_1" href="javascript:;">Purchase (Main)<span class="toggle_menu_plus" id="toggle_menu_plus_1"></span></a>
+                        <a href="javascript:;"><span class="color8">P</span></a>
+                        <ul class="sub_menu_ul" id="purchase_menu">
+                            <li id="li17" runat="server"><a href="/Forms/ManagePurchaseRequest.aspx">Purchase request</a></li>
+                            <li id="li18" runat="server"><a href="/Forms/ManagePO.aspx">purchase order </a></li>
+                            <li id="li19" runat="server"><a href="/Forms/ManagePOGrid.aspx">purchase order grid </a></li>
+                            <li id="li20" runat="server"><a href="/Forms/ManagePORMA.aspx">purchase order RMA </a></li>
+                            <li id="li21" runat="server"><a href="/Forms/ManagePORMAGrid.aspx">PO RMA Grid </a></li>
+                            <li id="li22" runat="server"><a href="/Forms/ManagePORMAReceiving.aspx">PO RMA Receiving </a></li>
+                        </ul>
+                    </li>
+                    <li id="li23" runat="server"><a class="anchor_1" href="/Forms/ManageInventory.aspx">Master Inventory</a><a href="/Forms/ManageInventory.aspx"><span class="color7">P</span></a></li>
+                    <li id="li1" runat="server"><a class="anchor_1" href="/Forms/ManageRealTimeInventory.aspx">RealTime Inventory</a><a href="/Forms/ManageRealTimeInventory.aspx"><span class="color7">P</span></a></li>
+
+                    <li><a class="anchor_1" id="sub_menu_2" href="javascript:;">Sales (Main) <span class="toggle_menu_plus" id="toggle_menu_plus_2"></span></a><a href="/Forms/ManageSO.aspx"><span class="color10">P</span></a>
+                        <ul class="sub_menu_ul" id="sales_menu">
+                            <li id="li24" runat="server"><a href="/Forms/ManageSO.aspx">Sales order</a></li>
+                            <li id="li25" runat="server"><a href="/Forms/ManageSOGrid.aspx">SO Grid </a></li>
+                            <li id="li26" runat="server"><a href="/Forms/ManageSORMA.aspx">SO RMA </a></li>
+                            <li id="li27" runat="server"><a href="/Forms/ManageSORMAGrid.aspx">SO RMA Grid </a></li>
+                            <li id="li28" runat="server"><a href="/Forms/ManageSOShippingScreen.aspx">SO Shipping Screen </a></li>
+                        </ul>
+                    </li>
+
+                    <li id="li29" runat="server"><a class="anchor_1" href="/Forms/ManageThread.aspx">Manage Thread</a><a href="/Forms/ManageSOShippingScreen.aspx"><span class="color10">M</span></a></li>
+                    <li id="li30" runat="server"><a class="anchor_1" href="/Forms/ManageFileManager.aspx">Manage FileManager</a><a href="/Forms/ManageSOShippingScreen.aspx"><span class="color10">M</span></a></li>
+
+                    <li><a class="anchor_1" href="/Reporting/Report.aspx">Manage Report</a><a href="/Reporting/Report.aspx"><span class="color10">M</span></a></li>
+                    <li id="li31" runat="server"><a class="anchor_1" href="/Forms/ManageAuthorization.aspx">Manage Authorization</a><a href="/Forms/ManageAuthorization.aspx"><span class="color10">M</span></a></li>--%>
+                </ul>
+
+            </div>
+            <div class="right_content_area">
+                <div id="dvNotPopup">
+                </div>
+                <div class="headerWrapper">
+                    <h3 class="usernameMain">Welcome
+                        <label id="idname" runat="server"></label>
+                    </h3>
+                    <ul>
+                        <li><a title="Logout" href="/Users/Logout.aspx"></a></li>
+                    </ul>
+                </div>
+                <div class="content_main_container">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Scripts/default.js" type="text/javascript"></script>
+    <script src="/StreamExample/assets/jquery/mustache.js" type="text/javascript"></script>
+    <script src="/StreamExample/assets/jquery/stream_table.js" type="text/javascript"></script>
+</body>
+</html>
